@@ -1,7 +1,7 @@
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/constants/images.dart';
-import 'file:///C:/Users/PC%20Win10/AndroidStudioProjects/ecommerce_mobile_app/lib/user_management/ui/log_in/login_page.dart';
-import 'file:///C:/Users/PC%20Win10/AndroidStudioProjects/ecommerce_mobile_app/lib/user_management/ui/registure/register_page.dart';
+import 'package:ecommerce_mobile_app/user_management/ui/log_in/login_page.dart';
+import 'package:ecommerce_mobile_app/user_management/ui/registure/register_page.dart';
 import 'package:ecommerce_mobile_app/util/screen_util.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
