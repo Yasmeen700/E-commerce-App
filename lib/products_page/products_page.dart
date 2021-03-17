@@ -1,3 +1,4 @@
+import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/products_page/categories/Electronics.dart';
 import 'package:ecommerce_mobile_app/products_page/categories/men.dart';
@@ -39,10 +40,7 @@ class _ProductsScreenState extends State<ProductsScreen>
         backgroundColor: GlobalColors.brownColor,
         title: Text(
           'Products by categories',
-          style: TextStyle(
-            color: GlobalColors.whiteColor,
-            fontFamily: 'Mon',
-          ),
+          style: FontStyles.pageTitle,
         ),
         bottom: TabBar(
           isScrollable: true,

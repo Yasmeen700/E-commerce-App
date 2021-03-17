@@ -1,6 +1,7 @@
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/model/product.dart';
+import 'package:ecommerce_mobile_app/my_cart/my_cart_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,9 +19,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: GlobalColors.whiteColor,
+        backgroundColor: GlobalColors.brownColor,
         elevation: 0,
-        title: Text(widget.product.productName, style: FontStyles.titleDetails),
+        centerTitle: true,
+        title: Text(
+          widget.product.productName,
+          style: FontStyles.pageTitle,
+        ),
+        iconTheme: IconThemeData(color: GlobalColors.whiteColor),
       ),
       backgroundColor: GlobalColors.whiteColor,
       body: Column(
@@ -106,7 +112,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
         child: Icon(Icons.shopping_cart_outlined),
         elevation: 20,
         tooltip: 'add to cart',
-        onPressed: (){},
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (ctx) => MyCart()));
+        },
         splashColor: GlobalColors.brownColor,
         hoverColor: GlobalColors.brownColor,
         focusColor: GlobalColors.brownColor,

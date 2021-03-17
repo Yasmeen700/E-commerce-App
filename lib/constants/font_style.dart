@@ -16,4 +16,10 @@ abstract class FontStyles {
     fontSize: 12,
     color: Color(0xFF322d2c),
   );
+
+  static const TextStyle pageTitle = TextStyle(
+  // fontWeight: FontWeight.w600,
+  fontFamily: 'Mon',
+  fontSize: 20,
+  color: Color(0xFFcbcac2));
 }
