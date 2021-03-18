@@ -6,6 +6,7 @@ import 'package:ecommerce_mobile_app/util/screen_util.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
+
 class HomePage extends StatelessWidget {
   static String homePageRouteName = 'homePage';
 

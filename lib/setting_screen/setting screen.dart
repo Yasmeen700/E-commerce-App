@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-class setting_screen extends StatefulWidget {
-  @override
-  _setting_screenState createState() => _setting_screenState();
-}
+import'package:flutter/material.dart';
 
-class _setting_screenState extends State<setting_screen> {
+class Setting extends StatefulWidget {
+  @override
+  _SettingState createState() => _SettingState();
+}
+class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,27 +34,36 @@ class _setting_screenState extends State<setting_screen> {
                 child: Container(
                   child: Column(
                     children: [
+
+
                       InkWell(
                         child: ListTile(
                           leading: Icon(Icons.lock, color:Colors.black),
                           title: Text('Change password'),
-                          trailing: Icon(Icons.arrow_forward_ios),
+                          trailing: Icon(Icons.arrow_forward_ios,color: Colors.black,),
                         ),
 
                         onTap: (){},),
+
                       InkWell(
 
                         child: ListTile(
 
-                          leading: Icon(Icons.language_sharp, color: Colors.black),
+                          leading: Icon(Icons.language_sharp, color: Colors.black,),
                           title: Text('Change language'),
-                          trailing: Icon(Icons.arrow_forward_ios),
+                          trailing: Icon(Icons.arrow_forward_ios,color: Colors.black,),
                         ),
 
-                        onTap: (){},)
+                        onTap: (){},),
+
+
 
                     ],
+
+
+
                   ),
+
                 ),
               )
             ]
@@ -62,5 +71,3 @@ class _setting_screenState extends State<setting_screen> {
       ),
     );
   }}
-
-

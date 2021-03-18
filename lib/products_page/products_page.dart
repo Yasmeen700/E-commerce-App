@@ -1,7 +1,11 @@
+
+
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
+
 import 'package:ecommerce_mobile_app/products_page/categories/Electronics.dart';
 import 'package:ecommerce_mobile_app/products_page/categories/men.dart';
 import 'package:ecommerce_mobile_app/products_page/categories/women.dart';
+import 'package:ecommerce_mobile_app/setting_screen/setting%20screen.dart';
 import 'package:flutter/material.dart';
 
 import 'categories/Jewelery.dart';
@@ -59,7 +63,124 @@ class _ProductsScreenState extends State<ProductsScreen>
         ),
         iconTheme: IconThemeData(color: GlobalColors.whiteColor),
       ),
-      drawer: _drawer,
+      drawer: Drawer(
+
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            DrawerHeader(
+              child: Container(
+                width: 350,
+                height: 400,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/drawer.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+// Image.asset(
+//   "assets/images/drawer.jpg",
+//   fit: BoxFit.cover,
+//   width: MediaQuery.of(context).size.width,
+//   height: MediaQuery.of(context).size.height,
+// ),
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: GlobalColors.brownColor,
+              ),
+              title: Text(
+                'Settings',
+                style: TextStyle(
+                    color: GlobalColors.brownColor,
+                    fontFamily: "Mon",
+                    fontWeight: FontWeight.w600),
+              ),
+              onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> Setting()));
+                    },
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.shopping_cart_outlined,
+                color: GlobalColors.brownColor,
+              ),
+              title: Text(
+                'My Cart',
+                style: TextStyle(
+                    color: GlobalColors.brownColor,
+                    fontFamily: "Mon",
+                    fontWeight: FontWeight.w600),
+              ),
+              onTap: () {},
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.account_balance_wallet_outlined,
+                color: GlobalColors.brownColor,
+              ),
+              title: Text(
+                'My Purchases',
+                style: TextStyle(
+                    color: GlobalColors.brownColor,
+                    fontFamily: "Mon",
+                    fontWeight: FontWeight.w600),
+              ),
+              onTap: () {},
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: GlobalColors.brownColor,
+              ),
+              title: Text(
+                'My Activity',
+                style: TextStyle(
+                    color: GlobalColors.brownColor,
+                    fontFamily: "Mon",
+                    fontWeight: FontWeight.w600),
+              ),
+              onTap: () {},
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.new_releases_outlined,
+                color: GlobalColors.brownColor,
+              ),
+              title: Text(
+                'About Us',
+                style: TextStyle(
+                    color: GlobalColors.brownColor,
+                    fontFamily: "Mon",
+                    fontWeight: FontWeight.w600),
+              ),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       body: TabBarView(
         controller: _tabController,
         children: [
@@ -72,120 +193,3 @@ class _ProductsScreenState extends State<ProductsScreen>
     );
   }
 }
-
-Drawer _drawer = Drawer(
-
-  child: Column(
-    children: <Widget>[
-      SizedBox(
-        height: 30,
-      ),
-      DrawerHeader(
-        child: Container(
-          width: 350,
-          height: 400,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/drawer.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-// Image.asset(
-//   "assets/images/drawer.jpg",
-//   fit: BoxFit.cover,
-//   width: MediaQuery.of(context).size.width,
-//   height: MediaQuery.of(context).size.height,
-// ),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.settings,
-          color: GlobalColors.brownColor,
-        ),
-        title: Text(
-          'Settings',
-          style: TextStyle(
-              color: GlobalColors.brownColor,
-              fontFamily: "Mon",
-              fontWeight: FontWeight.w600),
-        ),
-        onTap: () {},
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.shopping_cart_outlined,
-          color: GlobalColors.brownColor,
-        ),
-        title: Text(
-          'My Cart',
-          style: TextStyle(
-              color: GlobalColors.brownColor,
-              fontFamily: "Mon",
-              fontWeight: FontWeight.w600),
-        ),
-        onTap: () {},
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.account_balance_wallet_outlined,
-          color: GlobalColors.brownColor,
-        ),
-        title: Text(
-          'My Purchases',
-          style: TextStyle(
-              color: GlobalColors.brownColor,
-              fontFamily: "Mon",
-              fontWeight: FontWeight.w600),
-        ),
-        onTap: () {},
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.list,
-          color: GlobalColors.brownColor,
-        ),
-        title: Text(
-          'My Activity',
-          style: TextStyle(
-              color: GlobalColors.brownColor,
-              fontFamily: "Mon",
-              fontWeight: FontWeight.w600),
-        ),
-        onTap: () {},
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      ListTile(
-        leading: Icon(
-          Icons.new_releases_outlined,
-          color: GlobalColors.brownColor,
-        ),
-        title: Text(
-          'About Us',
-          style: TextStyle(
-              color: GlobalColors.brownColor,
-              fontFamily: "Mon",
-              fontWeight: FontWeight.w600),
-        ),
-        onTap: () {},
-      ),
-    ],
-  ),
-);
