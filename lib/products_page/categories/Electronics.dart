@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../product_card_widget.dart';
+import '../product_grid_view.dart';
 
 class ElectronicCategory extends StatefulWidget {
   @override
@@ -16,55 +17,12 @@ class _ElectronicCategoryState extends State<ElectronicCategory> {
   Widget build(BuildContext context) {
     return Container(
       color: GlobalColors.whiteColor,
-      child: GridView.builder(
-        // padding: EdgeInsets.all(10),
-        itemCount: items.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 0.73,
-            crossAxisCount: 2,
-            mainAxisSpacing: 0.5,
-            crossAxisSpacing: 5),
-        itemBuilder: (context, index) => ProductCard(
-          product: items[index],
-          id: items[index].id,
-          name:items[index].productName,
-          price: items[index].salePrice,
-          imageUrl: items[index].productPhoto,
-          press: (){
-            Navigator.push(context, MaterialPageRoute(builder: (ctx)=>DetailsScreen(product: items[index],)));
-          },
-        ),
-      ),
+      child: ProductGridView(),
     );
   }
 }
 
-List<Product> items = [
-  Product(
-    id: 1,
-    productName: 'Grey Shirt',
-    salePrice: 29.99,
-    productPhoto: 'assets/images/drawer.jpg',
-  ),
-  Product(
-    id: 2,
-    productName: 'Red Shirt',
-    salePrice: 29.99,
-    productPhoto: 'assets/images/productPhoto.jpg',
-  ),
-  Product(
-    id: 3,
-    productName: 'Red Shirt',
-    salePrice: 29.99,
-    productPhoto: 'assets/images/productPhoto.jpg',
-  ),
-  Product(
-    id: 4,
-    productName: 'Red Shirt',
-    salePrice: 29.99,
-    productPhoto: 'assets/images/productPhoto.jpg',
-  ),
-];
+
 
 // GridView.count(
 // crossAxisCount: 2,

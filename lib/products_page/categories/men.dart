@@ -1,4 +1,7 @@
+import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:flutter/material.dart';
+
+import '../product_grid_view.dart';
 
 class MenCategory extends StatefulWidget {
   @override
@@ -8,10 +11,9 @@ class MenCategory extends StatefulWidget {
 class _MenCategoryState extends State<MenCategory> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueGrey,
-
-      child:Center(child:Text('Men',style: TextStyle(fontSize: 40),), ) ,
+    return  Container(
+      color: GlobalColors.whiteColor,
+      child: ProductGridView(),
     );
   }
 }
