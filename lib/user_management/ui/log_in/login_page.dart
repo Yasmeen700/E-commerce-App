@@ -1,5 +1,5 @@
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
-import 'package:ecommerce_mobile_app/products_page/products_page.dart';
+import 'package:ecommerce_mobile_app/screens/products_page/products_page.dart';
 import 'package:ecommerce_mobile_app/user_management/ui/log_in/password.dart';
 import 'package:ecommerce_mobile_app/user_management/ui/log_in/user_name.dart';
 import 'package:ecommerce_mobile_app/user_management/ui/registure/register_page.dart';

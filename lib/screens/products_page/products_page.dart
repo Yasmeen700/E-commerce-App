@@ -3,10 +3,10 @@ import 'package:ecommerce_mobile_app/constants/font_style.dart';
 
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 
-import 'package:ecommerce_mobile_app/products_page/categories/Electronics.dart';
-import 'package:ecommerce_mobile_app/products_page/categories/men.dart';
-import 'package:ecommerce_mobile_app/products_page/categories/women.dart';
-import 'package:ecommerce_mobile_app/setting_screen/setting%20screen.dart';
+import 'package:ecommerce_mobile_app/screens/products_page/categories/Electronics.dart';
+import 'package:ecommerce_mobile_app/screens/products_page/categories/men.dart';
+import 'package:ecommerce_mobile_app/screens/products_page/categories/women.dart';
+import 'package:ecommerce_mobile_app/screens/setting_screen/setting%20screen.dart';
 import 'package:flutter/material.dart';
 
 import 'categories/Jewelery.dart';

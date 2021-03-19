@@ -1,7 +1,8 @@
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/model/product.dart';
-import 'package:ecommerce_mobile_app/my_cart/my_cart_screen.dart';
+import 'package:ecommerce_mobile_app/screens/my_cart/my_cart_screen.dart';
+import 'package:ecommerce_mobile_app/screens/my_cart/my_cart_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  List  myCartList=[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,8 +115,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
         elevation: 20,
         tooltip: 'add to cart',
         onPressed: () {
+          myCartList.add(widget.product);
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctx) => MyCart()));
+              .push(MaterialPageRoute(builder: (ctx) => MyCart(
+widget.product,
+            myCartList
+          )));
+
         },
         splashColor: GlobalColors.brownColor,
         hoverColor: GlobalColors.brownColor,

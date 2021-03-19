@@ -1,9 +1,14 @@
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
+import 'package:ecommerce_mobile_app/model/product.dart';
 import 'package:ecommerce_mobile_app/util/screen_util.dart';
 import 'package:flutter/material.dart';
+import 'my_cart_widget.dart';
 
 class MyCart extends StatefulWidget {
+  final Product product ;
+  final List myCartList;
+  MyCart(this.product,this.myCartList);
   @override
   _MyCartState createState() => _MyCartState();
 }
@@ -11,6 +16,7 @@ class MyCart extends StatefulWidget {
 class _MyCartState extends State<MyCart> {
   @override
   Widget build(BuildContext context) {
+    // final cart = Provider.of<Cart>(context);
     return Scaffold(
         backgroundColor: GlobalColors.whiteColor,
         appBar: AppBar(
@@ -24,31 +30,22 @@ class _MyCartState extends State<MyCart> {
           iconTheme: IconThemeData(color: GlobalColors.whiteColor),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: ScreensHelper.fromHeight(1),
-              vertical: ScreensHelper.fromWidth(4)),
-          child: ListView.builder(
+            padding: EdgeInsets.symmetric(
+                horizontal: ScreensHelper.fromHeight(1),
+                vertical: ScreensHelper.fromWidth(4)),
+            child: ListView.builder(
 
-              itemCount: 4,
-              itemBuilder: (ctx, i) {
-                return Card(
-                  color: GlobalColors.whiteColor,
-                  elevation: 10,
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: GlobalColors.brownColor,
-                      radius: 30,
-                    ),
-                    title: Text('price'),
-                    subtitle: Text('title'),
-                    trailing: Icon(
-                      Icons.check_box_outline_blank_sharp,
-                      color: GlobalColors.brownColor,
-                    ),
-                  ),
-                );
-              }),
-        ),
+                itemCount: widget.myCartList.length,
+                itemBuilder: (ctx, index) {
+                  return MyCartWidget(
+                    id: widget.product.id.toString(),
+                    title: 'title',
+                    price: widget.product.salePrice,
+                    photo: widget.product.productPhoto,
+                  );
+                }),
+          ),
+
         floatingActionButton: Row(
           // crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.start,
@@ -90,7 +87,9 @@ class _MyCartState extends State<MyCart> {
 
           ],
         ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+     floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
+
+
