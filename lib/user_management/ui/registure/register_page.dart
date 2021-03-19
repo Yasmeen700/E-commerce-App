@@ -5,6 +5,7 @@ import 'package:ecommerce_mobile_app/user_management/ui/registure/register_user_
 import 'package:ecommerce_mobile_app/user_management/ui/registure/registrePassword.dart';
 import 'package:ecommerce_mobile_app/util/screen_util.dart';
 import 'package:flutter/material.dart';
+import'package:ecommerce_mobile_app/pinCodePage/pinCodePage.dart';
 
 
 class RegisterPage extends StatefulWidget {
@@ -121,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Text('Sign UP',style: TextStyle(color: GlobalColors.whiteColor),),
 
               onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> pinCodePage()));
                 print('object');
               },
             ),
