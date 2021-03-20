@@ -2,27 +2,22 @@ import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-class MyCartWidget extends StatelessWidget {
+class MyCartWidget extends StatefulWidget {
   final String id;
-  // final String productId;
   final double price;
-  // final int quantity;
   final String title;
   final String photo;
+  bool isChecked = false;
 
-  MyCartWidget({
-    this.id,
-    this.price,
-    this.title,
-    // this.productId,
-    // this.quantity,
-    this.photo
-  });
+  MyCartWidget({this.id, this.price, this.title, this.photo, this.isChecked});
 
   @override
+  _MyCartWidgetState createState() => _MyCartWidgetState();
+}
+
+class _MyCartWidgetState extends State<MyCartWidget> {
+  @override
   Widget build(BuildContext context) {
-    // final cart= Provider.of<Cart>(context,listen: false);
     return Card(
       color: GlobalColors.whiteColor,
       elevation: 10,
@@ -30,13 +25,25 @@ class MyCartWidget extends StatelessWidget {
         leading: CircleAvatar(
           backgroundColor: GlobalColors.brownColor,
           radius: 30,
-          backgroundImage: AssetImage(photo),
+          backgroundImage: AssetImage(widget.photo),
         ),
-        title: Text('$price'),
-        subtitle: Text(title),
-        trailing: Icon(
-          Icons.check_box_outline_blank_sharp,
-          color: GlobalColors.brownColor,
+        title: Text('${widget.price}'),
+        subtitle: Text(widget.title),
+        trailing: IconButton(
+          onPressed: () {
+            setState(() {
+              widget.isChecked = !widget.isChecked;
+            });
+          },
+          icon: widget.isChecked
+              ? Icon(
+                  Icons.check_box_outline_blank_sharp,
+                  color: GlobalColors.brownColor,
+                )
+              : Icon(
+                  Icons.check_box,
+                  color: GlobalColors.brownColor,
+                ),
         ),
       ),
     );

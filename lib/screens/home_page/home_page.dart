@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        // backgroundColor: GlobalColors.whiteColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -49,6 +50,7 @@ class HomePage extends StatelessWidget {
                 height: ScreensHelper.fromHeight(7),
                 // color: GlobalColors.brownColor,
                 child: RaisedButton(
+                  color: GlobalColors.whiteColor,
                     child: Text(
                       "Log in",
                       style: TextStyle(

@@ -1,8 +1,7 @@
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
-import 'package:ecommerce_mobile_app/model/product.dart';
+import 'package:ecommerce_mobile_app/model/product_model.dart';
 import 'package:ecommerce_mobile_app/screens/my_cart/my_cart_screen.dart';
-import 'package:ecommerce_mobile_app/screens/my_cart/my_cart_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +24,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          widget.product.productName,
+          widget.product.id.toString(),
           style: FontStyles.pageTitle,
         ),
         iconTheme: IconThemeData(color: GlobalColors.whiteColor),
@@ -37,7 +36,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               child: Image.asset(
-                widget.product.productPhoto,
+                widget.product.image,
                 fit: BoxFit.cover,
               ),
             ),
@@ -52,8 +51,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                      'Lorem ipsum or lipsum as it is sometimes known '
-                      'is dummy text used in laying out print ',
+                      widget.product.title,
                       style: FontStyles.descriptionDetails),
                 )
               ],
@@ -70,11 +68,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'Lorem ipsum, or lipsum as it is sometimes known, '
-                    'is dummy text used in laying out print,'
-                    ' graphic or web designs.'
-                    ' The passage is attributed to an unknown '
-                    'typesetter in the 15th century who is',
+                    widget.product.description,
                     style: FontStyles.descriptionDetails,
                   ),
                 ),
@@ -89,7 +83,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   child: Text('Category :', style: FontStyles.titleDetails)),
               Expanded(
                   flex: 2,
-                  child: Text('${widget.product.salePrice}',
+                  child: Text('${widget.product.category}',
                       style: FontStyles.descriptionDetails)),
             ]),
           ),
@@ -102,7 +96,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     child: Text('Price :', style: FontStyles.titleDetails)),
                 Expanded(
                   flex: 2,
-                  child: Text('${widget.product.salePrice}',
+                  child: Text('${widget.product.price}',
                       style: FontStyles.descriptionDetails),
                 ),
               ],
@@ -118,8 +112,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
           myCartList.add(widget.product);
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (ctx) => MyCart(
-widget.product,
-            myCartList
+            product: widget.product,
+            myCartList: myCartList,
           )));
 
         },

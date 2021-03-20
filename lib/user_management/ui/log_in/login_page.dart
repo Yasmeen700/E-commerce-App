@@ -75,88 +75,84 @@ class _LoginPageState extends State<LoginPage> {
         SizedBox(
           height: ScreensHelper.fromHeight(2.3),
         ),
-        Column(
-          children: <Widget>[
-            Container(
-              child: PasswordTextField(),
-            ),
-            SizedBox(
-              height: ScreensHelper.fromHeight(1.5),
-            ),
-            FlatButton(
-              height: ScreensHelper.fromHeight(7),
-              minWidth: ScreensHelper.fromWidth(90),
-              shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(ScreensHelper.fromHeight(8))),
-              color: GlobalColors.brownColor,
-              child: Text(
-                'Log In',
-                style: TextStyle(color: GlobalColors.whiteColor),
-              ),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ProductsScreen()));
+        Container(
+          child: PasswordTextField(),
+        ),
+        SizedBox(
+          height: ScreensHelper.fromHeight(1.5),
+        ),
+        FlatButton(
+          height: ScreensHelper.fromHeight(7),
+          minWidth: ScreensHelper.fromWidth(90),
+          shape: RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(ScreensHelper.fromHeight(8))),
+          color: GlobalColors.brownColor,
+          child: Text(
+            'Log In',
+            style: TextStyle(color: GlobalColors.whiteColor),
+          ),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ProductsScreen()));
+          },
+        ),
+        SizedBox(
+          height: ScreensHelper.fromHeight(4),
+        ),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(65)),
+          child: Container(
+            padding: EdgeInsets.all(2),
+            child: InkWell(
+              onTap: () {
+                // Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+                //   return ForgotPassword();
+                // }));
               },
-            ),
-            SizedBox(
-              height: ScreensHelper.fromHeight(4),
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(65)),
-              child: Container(
-                padding: EdgeInsets.all(2),
-                child: InkWell(
-                  onTap: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-                    //   return ForgotPassword();
-                    // }));
-                  },
-                  child: Text(
-                    'Forgot your password?',
-                    style: TextStyle(
-                      color: GlobalColors.brownColor,
-                      fontFamily: 'Kanit',
-                    ),
-                  ),
+              child: Text(
+                'Forgot your password?',
+                style: TextStyle(
+                  color: GlobalColors.brownColor,
+                  fontFamily: 'Kanit',
                 ),
               ),
             ),
-            SizedBox(
-              height: ScreensHelper.fromHeight(3),
-            ),
-            Container(
-              padding: EdgeInsets.all(2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account?",
-                    style: TextStyle(
-                        fontFamily: 'Kanit', color: GlobalColors.brownColor),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (ctx) => RegisterPage()));
-                      // Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-                      //   return RegisterPage();
-                      // }
-                    },
-                    child: Text(
-                      'Sign up',
-                      softWrap: true,
-                      overflow:TextOverflow.fade,
-                      style: TextStyle(
-                        color: GlobalColors.whiteColor,
-                        fontFamily: 'Kanit',
-                      ),
-                    ),
-                  ),
-                ],
+          ),
+        ),
+        SizedBox(
+          height: ScreensHelper.fromHeight(3),
+        ),
+        Container(
+          padding: EdgeInsets.all(2),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Don't have an account?",
+                style: TextStyle(
+                    fontFamily: 'Kanit', color: GlobalColors.brownColor),
               ),
-            ),
-          ],
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (ctx) => RegisterPage()));
+                  // Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+                  //   return RegisterPage();
+                  // }
+                },
+                child: Text(
+                  'Sign up',
+                  softWrap: true,
+                  overflow:TextOverflow.fade,
+                  style: TextStyle(
+                    color: GlobalColors.whiteColor,
+                    fontFamily: 'Kanit',
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );

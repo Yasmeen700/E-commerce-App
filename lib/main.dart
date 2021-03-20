@@ -16,13 +16,14 @@ class MyApp extends StatelessWidget {
         HomePage.homePageRouteName: (context) => HomePage(),
       },
       // theme: ThemeData(
-      //   brightness: Brightness.light,
+      //   // brightness: Brightness.light,
       //   primaryColor: GlobalColors.whiteColor,
+      //   primarySwatch: GlobalColors.lightBrownColor2,
       //   appBarTheme: AppBarTheme(
       //     color: Colors.white,
       //     elevation: 0.0,
       //   ),
-      //   backgroundColor: Colors.white,
+      //   // backgroundColor: GlobalColors.whiteColor,
       //   iconTheme: IconThemeData(
       //     color: GlobalColors.whiteColor,
       //   ),

@@ -1,14 +1,13 @@
-
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
-
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
-
+import 'package:ecommerce_mobile_app/model/product_model.dart';
+import 'package:ecommerce_mobile_app/screens/my_activities/my_activities.dart';
+import 'package:ecommerce_mobile_app/screens/my_purchses/my_purchses.dart';
 import 'package:ecommerce_mobile_app/screens/products_page/categories/Electronics.dart';
 import 'package:ecommerce_mobile_app/screens/products_page/categories/men.dart';
 import 'package:ecommerce_mobile_app/screens/products_page/categories/women.dart';
 import 'package:ecommerce_mobile_app/screens/setting_screen/setting%20screen.dart';
 import 'package:flutter/material.dart';
-
 import 'categories/Jewelery.dart';
 
 class ProductsScreen extends StatefulWidget {
@@ -24,6 +23,7 @@ class _ProductsScreenState extends State<ProductsScreen>
   int index = 0;
   List choices;
 
+  @override
   void initState() {
     super.initState();
 
@@ -62,7 +62,6 @@ class _ProductsScreenState extends State<ProductsScreen>
         iconTheme: IconThemeData(color: GlobalColors.whiteColor),
       ),
       drawer: Drawer(
-
         child: Column(
           children: <Widget>[
             SizedBox(
@@ -105,8 +104,9 @@ class _ProductsScreenState extends State<ProductsScreen>
                     fontWeight: FontWeight.w600),
               ),
               onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> Setting()));
-                    },
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (ctx) => Setting()));
+              },
             ),
             SizedBox(
               height: 5,
@@ -123,7 +123,9 @@ class _ProductsScreenState extends State<ProductsScreen>
                     fontFamily: "Mon",
                     fontWeight: FontWeight.w600),
               ),
-              onTap: () {},
+              onTap: () {
+                // Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => MyCart()));
+              },
             ),
             SizedBox(
               height: 5,
@@ -140,7 +142,10 @@ class _ProductsScreenState extends State<ProductsScreen>
                     fontFamily: "Mon",
                     fontWeight: FontWeight.w600),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (ctx) => MyPurchases()));
+              },
             ),
             SizedBox(
               height: 5,
@@ -157,7 +162,10 @@ class _ProductsScreenState extends State<ProductsScreen>
                     fontFamily: "Mon",
                     fontWeight: FontWeight.w600),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (ctx) => MyActivities()));
+              },
             ),
             SizedBox(
               height: 5,

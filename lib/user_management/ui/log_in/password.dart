@@ -39,7 +39,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
 
           prefixIcon:Icon(Icons.lock,color: GlobalColors.brownColor),
           suffixIcon: IconButton(
-            icon: _securePassword ? Icon(Icons.visibility_off):Icon(Icons.visibility),
+
+            icon: _securePassword ? Icon(Icons.visibility_off,color: GlobalColors.brownColor,)
+                :Icon(Icons.visibility ,color: GlobalColors.brownColor,),
             color: GlobalColors.brownColor,
             onPressed: (){
               setState(() {

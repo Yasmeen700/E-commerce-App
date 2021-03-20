@@ -21,10 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  http:
   carousel_pro: ^1.0.0
   carousel_slider: ^3.0.0
   flutter_screenutil:
-  animated_text_kit: ^3.1.2
   pinput:
   flutter:
     sdk: flutter

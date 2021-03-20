@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-import 'global_colors.dart';
-
 abstract class FontStyles {
   static const TextStyle titleDetails = TextStyle(
     fontWeight: FontWeight.w600,

@@ -1,37 +1,29 @@
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
-import 'package:ecommerce_mobile_app/screens/details_screen/details_screen.dart';
-import 'package:ecommerce_mobile_app/model/product.dart';
+import 'package:ecommerce_mobile_app/model/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../product_card_widget.dart';
 import '../product_grid_view.dart';
 
-class ElectronicCategory extends StatefulWidget {
-  @override
-  _ElectronicCategoryState createState() => _ElectronicCategoryState();
-}
+class ElectronicCategory extends StatelessWidget {
+  final Future<List<Product>> products;
 
-class _ElectronicCategoryState extends State<ElectronicCategory> {
+  ElectronicCategory({this.products});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: GlobalColors.whiteColor,
-      child: ProductGridView(),
+      child: FutureBuilder(
+        future: products,
+        builder: (ctx, snapshot) {
+          if (snapshot.hasError) {
+            print(snapshot.error);
+          } else if (snapshot.hasData) {
+            return ProductGridView();
+          }
+          return CircularProgressIndicator();
+        },
+      ),
     );
   }
 }
-
-
-
-// GridView.count(
-// crossAxisCount: 2,
-// childAspectRatio: 1.0,
-// padding: const EdgeInsets.all(4.0),
-// mainAxisSpacing: ScreensHelper.fromHeight(2),
-// crossAxisSpacing: ScreensHelper.fromHeight(2),
-// children: _items.map((String url) {
-// return GridTile(
-// // footer:  ,
-// child: Image.network(url, fit: BoxFit.cover));
-// }).toList()),
