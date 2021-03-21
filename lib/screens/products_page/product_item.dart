@@ -4,26 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
-  // // final ProductClass product;
-  // final Function press;
-  // final int id;
-  // final String imageUrl;
-  // final String name;
-  // final double price;
-  // final String category;
-  //
-  //
-  // const ProductCard(
-  //     {Key key,
-  //     // this.product,
-  //     this.press,
-  //     this.id,
-  //     this.name,
-  //     this.imageUrl,
-  //     this.price,
-  //     this.category
-  //     })
-  //     : super(key: key);
   final Product product;
 
   ProductItem(this.product);

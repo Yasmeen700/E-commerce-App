@@ -15,7 +15,8 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-  List  myCartList=[];
+  List myCartList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +51,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     child: Text('Title :', style: FontStyles.titleDetails)),
                 Expanded(
                   flex: 2,
-                  child: Text(
-                      widget.product.title,
+                  child: Text(widget.product.title,
                       style: FontStyles.descriptionDetails),
-                )
+                ),
               ],
             ),
           ),
@@ -101,7 +101,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -110,12 +110,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
         tooltip: 'add to cart',
         onPressed: () {
           myCartList.add(widget.product);
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctx) => MyCart(
-            product: widget.product,
-            myCartList: myCartList,
-          )));
-
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => MyCart(
+                product: widget.product,
+                myCartList: myCartList,
+              ),
+            ),
+          );
         },
         splashColor: GlobalColors.brownColor,
         hoverColor: GlobalColors.brownColor,

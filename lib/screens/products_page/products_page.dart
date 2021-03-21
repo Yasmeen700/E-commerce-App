@@ -1,6 +1,7 @@
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/model/product_model.dart';
+import 'package:ecommerce_mobile_app/rsponse/fetch_category_name.dart';
 import 'package:ecommerce_mobile_app/screens/my_activities/my_activities.dart';
 import 'package:ecommerce_mobile_app/screens/my_purchses/my_purchses.dart';
 import 'package:ecommerce_mobile_app/screens/products_page/categories/Electronics.dart';
@@ -21,18 +22,13 @@ class _ProductsScreenState extends State<ProductsScreen>
 
   int currentIndex = 0;
   int index = 0;
-  List choices;
+  Future<List> choices ;
 
   @override
   void initState() {
     super.initState();
 
-    choices = [
-      'Electronics',
-      'Jewelery',
-      'Men Clothing',
-      'Women Clothing',
-    ];
+    choices = fetchCategory();
     _tabController = TabController(length: choices.length, vsync: this);
   }
 

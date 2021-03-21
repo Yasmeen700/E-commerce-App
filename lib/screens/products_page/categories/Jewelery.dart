@@ -13,7 +13,7 @@ class _JeweleryCategoryState extends State<JeweleryCategory> {
   Widget build(BuildContext context) {
     return  Container(
       color: GlobalColors.whiteColor,
-      child: ProductGridView(),
+      child:  Text('hh'),
     );
   }
 }
