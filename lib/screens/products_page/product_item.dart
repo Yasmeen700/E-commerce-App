@@ -23,7 +23,7 @@ class ProductItem extends StatelessWidget {
               color: GlobalColors.lightBrownColor2,
               borderRadius: BorderRadius.circular(10),
               image: new DecorationImage(
-                image: new AssetImage(product.image),
+                image: new NetworkImage(product.image),
                 fit: BoxFit.cover,
               ),
             ),

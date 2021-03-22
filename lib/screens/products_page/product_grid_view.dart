@@ -5,9 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductGridView extends StatefulWidget {
-  final List<Product> product;
+  final List<Product> products;
 
-  ProductGridView({this.product});
+  ProductGridView({this.products});
 
   @override
   _ProductGridViewState createState() => _ProductGridViewState();
@@ -18,19 +18,19 @@ class _ProductGridViewState extends State<ProductGridView> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: widget.product.length,
+      itemCount: widget.products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 0.73,
           crossAxisCount: 2,
           mainAxisSpacing: 0.5,
           crossAxisSpacing: 5),
       itemBuilder: (context, index) => GestureDetector(
-        child: ProductItem(widget.product[index]),
+        child: ProductItem(widget.products[index]),
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (ctx) => DetailsScreen(
-                product: widget.product[index],
+                product: widget.products[index],
               ),
             ),
           );

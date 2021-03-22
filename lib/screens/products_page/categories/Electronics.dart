@@ -1,6 +1,7 @@
+import 'package:ecommerce_mobile_app/api_manager/rsponse/api_manager.dart';
+import 'package:ecommerce_mobile_app/constants/Strings.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/model/product_model.dart';
-import 'package:ecommerce_mobile_app/rsponse/fetch_product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../product_grid_view.dart';
@@ -11,12 +12,13 @@ class ElectronicCategory extends StatefulWidget {
 }
 
 class _ElectronicCategoryState extends State<ElectronicCategory> {
-  Future<List<Product>> products;
 
+  Future<List<Product>> _products;
   @override
   void initState() {
     super.initState();
-    products = fetchProduct();
+
+    _products = ApiManager().getProduct(Strings.electronicsCategoryName);
   }
 
   @override
@@ -24,17 +26,17 @@ class _ElectronicCategoryState extends State<ElectronicCategory> {
     return Container(
       color: GlobalColors.whiteColor,
       child: FutureBuilder(
-        future: products,
+        future: _products,
         builder: (ctx, snapshot) {
-          // if (snapshot.hasError) {
-          //   print(snapshot.error);
-          // } else if (snapshot.hasData) {
+          if (snapshot.hasError) {
+            print(snapshot.error);
+          } else if (snapshot.hasData) {
             return ProductGridView(
-              product: snapshot.data,
+              products: snapshot.data,
             );
           }
-          // return CircularProgressIndicator();
-        // },
+          return Center(child: CircularProgressIndicator());
+        },
       ),
     );
   }

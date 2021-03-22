@@ -1,36 +1,105 @@
+// class Product {
+//   int id;
+//   String title;
+//   double price;
+//   String description;
+//   String category;
+//   String image;
+//
+//   Product(
+//       {this.id,
+//         this.title,
+//         this.price,
+//         this.description,
+//         this.category,
+//         this.image});
+//
+//   Product.fromJson(Map<String, dynamic> json) {
+//     id = json['id'];
+//     title = json['title'];
+//     price = json['price'];
+//     description = json['description'];
+//     category = json['category'];
+//     image = json['image'];
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['id'] = this.id;
+//     data['title'] = this.title;
+//     data['price'] = this.price;
+//     data['description'] = this.description;
+//     data['category'] = this.category;
+//     data['image'] = this.image;
+//     return data;
+//   }
+// }
+
+// To parse this JSON data, do
+//
+//     final product = productFromJson(jsonString);
+
+import 'dart:convert';
+
+List<Product> productFromJson(String str) => List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
+
+String productToJson(List<Product> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class Product {
+  Product({
+    this.id,
+    this.title,
+    this.price,
+    this.description,
+    this.category,
+    this.image,
+  });
+
   int id;
   String title;
   double price;
   String description;
-  String category;
+  Category category;
   String image;
 
-  Product(
-      {this.id,
-        this.title,
-        this.price,
-        this.description,
-        this.category,
-        this.image});
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json["id"],
+    title: json["title"],
+    price: json["price"].toDouble(),
+    description: json["description"],
+    category: categoryValues.map[json["category"]],
+    image: json["image"],
+  );
 
-  Product.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    price = json['price'];
-    description = json['description'];
-    category = json['category'];
-    image = json['image'];
-  }
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "title": title,
+    "price": price,
+    "description": description,
+    "category": categoryValues.reverse[category],
+    "image": image,
+  };
+}
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['price'] = this.price;
-    data['description'] = this.description;
-    data['category'] = this.category;
-    data['image'] = this.image;
-    return data;
+enum Category { MEN_CLOTHING, JEWELERY, ELECTRONICS, WOMEN_CLOTHING }
+
+final categoryValues = EnumValues({
+  "electronics": Category.ELECTRONICS,
+  "jewelery": Category.JEWELERY,
+  "men clothing": Category.MEN_CLOTHING,
+  "women clothing": Category.WOMEN_CLOTHING
+});
+
+class EnumValues<T> {
+  Map<String, T> map;
+  Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    if (reverseMap == null) {
+      reverseMap = map.map((k, v) => new MapEntry(v, k));
+    }
+    return reverseMap;
   }
 }

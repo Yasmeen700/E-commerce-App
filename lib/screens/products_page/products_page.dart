@@ -1,15 +1,15 @@
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
-import 'package:ecommerce_mobile_app/model/product_model.dart';
-import 'package:ecommerce_mobile_app/rsponse/fetch_category_name.dart';
 import 'package:ecommerce_mobile_app/screens/my_activities/my_activities.dart';
 import 'package:ecommerce_mobile_app/screens/my_purchses/my_purchses.dart';
-import 'package:ecommerce_mobile_app/screens/products_page/categories/Electronics.dart';
-import 'package:ecommerce_mobile_app/screens/products_page/categories/men.dart';
-import 'package:ecommerce_mobile_app/screens/products_page/categories/women.dart';
 import 'package:ecommerce_mobile_app/screens/setting_screen/setting%20screen.dart';
 import 'package:flutter/material.dart';
+import 'categories/Electronics.dart';
 import 'categories/Jewelery.dart';
+import 'categories/men.dart';
+import 'categories/women.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class ProductsScreen extends StatefulWidget {
   @override
@@ -19,19 +19,41 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends State<ProductsScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-
   int currentIndex = 0;
   int index = 0;
-  Future<List> choices ;
+  bool isloading = true;
 
   @override
   void initState() {
     super.initState();
+    fetchCategory();
 
-    choices = fetchCategory();
-    _tabController = TabController(length: choices.length, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
+  List<String> choices = [];
+  Future fetchCategory() async {
+    List<String> finalCategoryList = [];
+    http
+        .get('https://fakestoreapi.herokuapp.com/products/categories')
+        .then((http.Response response) async {
+      var category = await jsonDecode(response.body);
+      print(category);
+      print(category.runtimeType);
+
+      finalCategoryList = new List<String>.from(category);
+
+      print(finalCategoryList);
+      print(finalCategoryList.runtimeType);
+      for (String item in finalCategoryList) {
+        setState(() {
+          choices.add(item);
+        });
+      }
+      print(choices);
+      // setState(() => isloading = false);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,12 +67,16 @@ class _ProductsScreenState extends State<ProductsScreen>
         bottom: TabBar(
           isScrollable: true,
           tabs: choices
-              .map((e) => Tab(
-                      child: Text(
-                    e,
-                    style: TextStyle(
-                        fontFamily: 'kanit', color: GlobalColors.whiteColor),
-                  )))
+              .map(
+                (e) => Tab(
+              child: Text(
+                e,
+                style: TextStyle(
+                    fontFamily: 'kanit',
+                    color: GlobalColors.whiteColor),
+              ),
+            ),
+          )
               .toList(),
           controller: _tabController,
           indicatorColor: GlobalColors.whiteColor,
@@ -74,12 +100,6 @@ class _ProductsScreenState extends State<ProductsScreen>
                   ),
                 ),
               ),
-// Image.asset(
-//   "assets/images/drawer.jpg",
-//   fit: BoxFit.cover,
-//   width: MediaQuery.of(context).size.width,
-//   height: MediaQuery.of(context).size.height,
-// ),
               decoration: BoxDecoration(
                 color: Colors.transparent,
               ),
@@ -139,8 +159,8 @@ class _ProductsScreenState extends State<ProductsScreen>
                     fontWeight: FontWeight.w600),
               ),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (ctx) => MyPurchases()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (ctx) => MyPurchases()));
               },
             ),
             SizedBox(
@@ -159,8 +179,8 @@ class _ProductsScreenState extends State<ProductsScreen>
                     fontWeight: FontWeight.w600),
               ),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (ctx) => MyActivities()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (ctx) => MyActivities()));
               },
             ),
             SizedBox(
@@ -194,4 +214,6 @@ class _ProductsScreenState extends State<ProductsScreen>
       ),
     );
   }
+
+
 }
