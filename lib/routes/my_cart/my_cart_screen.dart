@@ -1,22 +1,12 @@
 import 'package:ecommerce_mobile_app/constants/font_style.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
-import 'package:ecommerce_mobile_app/model/product_model.dart';
+import 'package:ecommerce_mobile_app/model/cart.dart';
 import 'package:ecommerce_mobile_app/util/screen_util.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'my_cart_widget.dart';
 
-class MyCart extends StatefulWidget {
-  final Product product;
-
-  final List myCartList;
-
-  MyCart({this.product, this.myCartList});
-
-  @override
-  _MyCartState createState() => _MyCartState();
-}
-
-class _MyCartState extends State<MyCart> {
+class MyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final cart = Provider.of<Cart>(context);
@@ -35,16 +25,19 @@ class _MyCartState extends State<MyCart> {
         padding: EdgeInsets.symmetric(
             horizontal: ScreensHelper.fromHeight(1),
             vertical: ScreensHelper.fromWidth(4)),
-        child: ListView.builder(
-            itemCount: widget.myCartList.length,
-            itemBuilder: (ctx, index) {
-              return MyCartWidget(
-                id: widget.product.id.toString(),
-                title: 'title',
-                price: widget.product.price,
-                photo: widget.product.image,
-              );
-            }),
+        child: Consumer<Cart>(
+          builder: (context, cart, child) => ListView.builder(
+              itemCount: cart.items.length,
+              itemBuilder: (ctx, index) {
+                return MyCartWidget(
+                  id: cart.items.values.toList()[index].id.toString(),
+                  title: cart.items.values.toList()[index].title,
+                  price: cart.items.values.toList()[index].price,
+                  photo: cart.items.values.toList()[index].photo,
+                  // isChecked: cart.items.values.toList()[index].isChecked,
+                );
+              }),
+        ),
       ),
       floatingActionButton: Row(
         // crossAxisAlignment: CrossAxisAlignment.start,

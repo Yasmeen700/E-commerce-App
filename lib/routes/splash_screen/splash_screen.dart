@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/constants/images.dart';
-import 'package:ecommerce_mobile_app/screens/home_page/home_page.dart';
+import 'package:ecommerce_mobile_app/routes/home_page/home_page.dart';
 import 'package:ecommerce_mobile_app/util/screen_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

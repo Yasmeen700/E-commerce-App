@@ -1,6 +1,6 @@
 import 'package:ecommerce_mobile_app/model/product_model.dart';
-import 'package:ecommerce_mobile_app/screens/details_screen/details_screen.dart';
-import 'package:ecommerce_mobile_app/screens/products_page/product_item.dart';
+import 'package:ecommerce_mobile_app/routes/details_route/details_screen.dart';
+import 'package:ecommerce_mobile_app/routes/products/product_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

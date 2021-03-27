@@ -25,6 +25,8 @@ dependencies:
   carousel_pro: ^1.0.0
   carousel_slider: ^3.0.0
   flutter_screenutil:
+  provider:
+  intl:
   pinput:
   flutter:
     sdk: flutter
@@ -79,3 +81,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

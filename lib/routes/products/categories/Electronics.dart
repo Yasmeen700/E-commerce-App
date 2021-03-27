@@ -1,23 +1,24 @@
 import 'package:ecommerce_mobile_app/api_manager/rsponse/api_manager.dart';
-import 'package:ecommerce_mobile_app/constants/Strings.dart';
+import 'package:ecommerce_mobile_app/constants/strings.dart';
 import 'package:ecommerce_mobile_app/constants/global_colors.dart';
 import 'package:ecommerce_mobile_app/model/product_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../product_grid_view.dart';
 
-class JeweleryCategory extends StatefulWidget {
+class ElectronicCategory extends StatefulWidget {
   @override
-  _JeweleryCategoryState createState() => _JeweleryCategoryState();
+  _ElectronicCategoryState createState() => _ElectronicCategoryState();
 }
 
-class _JeweleryCategoryState extends State<JeweleryCategory> {
+class _ElectronicCategoryState extends State<ElectronicCategory> {
+
   Future<List<Product>> _products;
   @override
   void initState() {
     super.initState();
 
-    _products = ApiManager().getProduct(Strings.jeweleryCategoryName);
+    _products = ApiManager().getProduct(Strings.electronicsCategoryName);
   }
 
   @override

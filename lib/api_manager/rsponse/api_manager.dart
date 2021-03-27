@@ -1,4 +1,4 @@
-import 'package:ecommerce_mobile_app/constants/Strings.dart';
+import 'package:ecommerce_mobile_app/constants/strings.dart';
 import 'package:ecommerce_mobile_app/model/product_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
