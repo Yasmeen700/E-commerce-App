@@ -60,7 +60,8 @@ class _ProductsScreenState extends State<ProductsScreen>
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
+    return
+      isLoading
         ? Scaffold(
 
             appBar: AppBar(
@@ -80,7 +81,8 @@ class _ProductsScreenState extends State<ProductsScreen>
         ),
       ),
           )
-        : Scaffold(
+        :
+        Scaffold(
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: GlobalColors.brownColor,

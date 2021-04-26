@@ -1,14 +1,15 @@
 import 'package:ecommerce_mobile_app/model/cart_item.dart';
+import 'package:ecommerce_mobile_app/model/product_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class Cart extends ChangeNotifier {
-  Map<String, CartItem> _items = {};
+  Map<String, Product> _items = {};
 
   int get count {
     return _items.length;
   }
 
-  Map<String, CartItem> get items {
+  Map<String, Product> get items {
     return {..._items};
   }
 
@@ -16,8 +17,8 @@ class Cart extends ChangeNotifier {
       ) {
     _items.putIfAbsent(
         productId,
-        () => CartItem(
-              photo: image,
+        () => Product(
+              image: image,
               price: price,
               title: title,
             ));
@@ -29,5 +30,4 @@ class Cart extends ChangeNotifier {
     notifyListeners();
   }
 
-  void toggle() {}
 }
